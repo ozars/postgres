@@ -790,6 +790,10 @@
 /* Define to 1 if you have the `__strtoull' function. */
 #undef HAVE___STRTOULL
 
+/* Define to 1 to ignore data directory permission checks.
+   (--enable-ignoring-permissions) */
+#undef IGNORE_DATA_DIRECTORY_PERMISSIONS
+
 /* Define to the appropriate printf length modifier for 64-bit ints. */
 #undef INT64_MODIFIER
 

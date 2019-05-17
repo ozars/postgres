@@ -676,6 +676,12 @@ PGAC_ARG_BOOL(enable, cassert, no, [enable assertion checks (for debugging)],
               [AC_DEFINE([USE_ASSERT_CHECKING], 1,
                          [Define to 1 to build with assertion checks. (--enable-cassert)])])
 
+#
+# Ignore file permissions for data directory
+#
+PGAC_ARG_BOOL(enable, ignoring-permissions, no, [ignore data directory permission checks (at your own risk)],
+              [AC_DEFINE([IGNORE_DATA_DIRECTORY_PERMISSIONS], 1,
+                         [Define to 1 to ignore data directory permission checks. (--enable-ignoring-permissions)])])
 
 #
 # Include directories
