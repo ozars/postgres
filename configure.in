@@ -684,6 +684,14 @@ PGAC_ARG_BOOL(enable, ignoring-permissions, no, [ignore data directory permissio
                          [Define to 1 to ignore data directory permission checks. (--enable-ignoring-permissions)])])
 
 #
+# Don't use symlinks even if they are available
+#
+PGAC_ARG_BOOL(enable, ignoring-symlinks, no, [avoid using symlinks even if they are available (at your own risk)],
+              [AC_DEFINE([IGNORE_WORKING_LINK], 1,
+                         [Define to 1 to avoid using symlinks even if they are
+                          available. (--enable-ignoring-symlinks)])])
+
+#
 # Include directories
 #
 ac_save_IFS=$IFS

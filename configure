@@ -842,6 +842,7 @@ with_llvm
 enable_depend
 enable_cassert
 enable_ignoring_permissions
+enable_ignoring_symlinks
 enable_thread_safety
 with_icu
 with_tcl
@@ -1527,6 +1528,9 @@ Optional Features:
   --enable-ignoring-permissions
                           ignore data directory permission checks (at your own
                           risk)
+  --enable-ignoring-symlinks
+                          avoid using symlinks even if they are available (at
+                          your own risk)
   --disable-thread-safety disable thread-safety in client libraries
   --disable-largefile     omit support for large files
   --disable-float4-byval  disable float4 passed by value
@@ -7228,6 +7232,35 @@ $as_echo "#define IGNORE_DATA_DIRECTORY_PERMISSIONS 1" >>confdefs.h
 
 else
   enable_ignoring_permissions=no
+
+fi
+
+
+
+#
+# Don't use symlinks even if they are available
+#
+
+
+# Check whether --enable-ignoring-symlinks was given.
+if test "${enable_ignoring_symlinks+set}" = set; then :
+  enableval=$enable_ignoring_symlinks;
+  case $enableval in
+    yes)
+
+$as_echo "#define IGNORE_WORKING_LINK 1" >>confdefs.h
+
+      ;;
+    no)
+      :
+      ;;
+    *)
+      as_fn_error $? "no argument expected for --enable-ignoring-symlinks option" "$LINENO" 5
+      ;;
+  esac
+
+else
+  enable_ignoring_symlinks=no
 
 fi
 
