@@ -152,9 +152,13 @@ checkDataDir(void)
 	 * be proper support for Unix-y file permissions.  Need to think of a
 	 * reasonable check to apply on Windows.
 	 */
-#if !defined(WIN32) && !defined(__CYGWIN__) && (!defined(IGNORE_DATA_DIRECTORY_PERMISSIONS) || IGNORE_DATA_DIRECTORY_PERMISSIONS)
+#if !defined(WIN32) && !defined(__CYGWIN__)
 	if (stat_buf.st_mode & PG_MODE_MASK_GROUP)
+#if defined(IGNORE_DATA_DIRECTORY_PERMISSIONS) && IGNORE_DATA_DIRECTORY_PERMISSIONS
+		ereport(WARNING,
+#else
 		ereport(FATAL,
+#endif
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
 				 errmsg("data directory \"%s\" has invalid permissions",
 						DataDir),
